@@ -20,6 +20,19 @@ export class App extends Component {
     }));
   };
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.state.contacts !== prevProps.contacts) {
+      localStorage.setItem('phoneBook', JSON.stringify(this.state.contacts));
+    }
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem('phoneBook') !== null) {
+      const phoneData = JSON.parse(localStorage.getItem('phoneBook'));
+      this.setState({ contacts: phoneData });
+    }
+  }
+
   onAddContact = (value, number) => {
     const id = nanoid();
     const trimmedName = value.trim();
