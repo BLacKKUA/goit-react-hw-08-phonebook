@@ -12,7 +12,13 @@ export const App = () => {
   ];
 
   const [filter, setFilter] = useState('');
-  const [contacts, setContacts] = useState(test);
+  const [contacts, setContacts] = useState(() => {
+    if (localStorage.getItem('phoneBook') !== null) {
+      return JSON.parse(localStorage.getItem('phoneBook'));
+    } else {
+      return test;
+    }
+  });
 
   const onDeleteContact = id => {
     setContacts(contacts.filter(contact => contact.id !== id));
