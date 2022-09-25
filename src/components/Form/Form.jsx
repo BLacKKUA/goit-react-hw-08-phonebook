@@ -1,7 +1,7 @@
 import React from 'react';
 import Contacts from 'components/Contacts/Contacts';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/action';
+import { addContact } from '../../redux/reducer';
 import { getContacts } from 'redux/selectors';
 
 const Form = () => {
